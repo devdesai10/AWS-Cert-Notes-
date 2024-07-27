@@ -64,3 +64,9 @@
 
 #### A company uploaded its website files to an Amazon S3 bucket that has S3 versioning enabled. The company uses an Amazon CloudFront distribution with the S3 bucket as the origin. The company recently modified the files, but the object names remained the same. users report that old content is still appearing on the website. 
 - Create a CloudFront invalidation, and add the path of the updated files. **By default, CloudFront caches a response from Amazon S3 for 24 hours (Default TTL of 86,400 seconds) If your request lands at an edge location that served the Amazon S3 response within 24 hours, then CloudFront uses the cached response. This happens even if you updated the content in Amazon S3**
+
+#### A company host a static website on Amazon S3. An Amazon CloudFront distribution presents this site to global users. The company uses the Managed- 
+#### CachingDisabled CloudFront cache policy. the company's developers confirm that they frequently update a file in Amazon S3 with new information
+#### Users report that the website presents correct information when the website first loads the file. However, the users' browsers do not retrieve the updated file after a refresh.
+- Add a Cache-Control header field with max-age=0 to the S3 object **You can control how long your files stay in a CloudFront cache before CloudFront forwards another request to your origin. Reducing the duration allows you to serve dynamic content. Increasing the duration means that your users get better performance because your files are more likely to be served directly from the edge cache. A longer duration also reduces the load on your origin.**
+
